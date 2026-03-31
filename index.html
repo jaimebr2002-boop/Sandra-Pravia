@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandra Pravia | Nails Studio Oviedo</title>
+    <meta name="description" content="Sandra Pravia Manicura y Pedicura Nails Studio en Oviedo. Sensibilidad y cuidado al detalle. Reserva tu cita.">
+    <link rel="icon" type="image/webp" href="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967538/2025-07-07_vfiy3i.webp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #9B7B7B;
+            --color-primary-light: #A8867A;
+            --color-cream: #F5EDE4;
+            --color-cream-light: #FAF3EE;
+            --color-gold: #C9A96E;
+            --color-text: #2C1F1F;
+            --color-bg: #FDF8F5;
+            --color-white: #FFFFFF;
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-subtitle: 'Jost', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Typography */
+        .title-xl { font-size: clamp(3rem, 8vw, 5.5rem); letter-spacing: -0.02em; }
+        .title-lg { font-size: clamp(2.5rem, 5vw, 4rem); }
+        .title-md { font-size: clamp(2rem, 4vw, 3rem); }
+        .subtitle { font-family: var(--font-subtitle); font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); }
+        .text-body { font-size: 1.1rem; font-weight: 300; }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-subtitle);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-text);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(155, 123, 123, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: transparent;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(253, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1001;
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-cream);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: var(--font-subtitle);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--font-subtitle);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background-color: var(--color-text);
+            margin: 6px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--color-cream-light) 0%, var(--color-bg) 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg-decoration {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(155,123,123,0.1) 0%, rgba(253,248,245,0) 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero .subtitle {
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        /* Decorator Line */
+        .decorator-line {
+            width: 1px;
+            height: 60px;
+            background-color: var(--color-gold);
+            margin: 0 auto 2rem;
+        }
+
+        /* Sobre Nosotros */
+        .about {
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 2rem auto 4rem;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            padding: 2rem;
+            background-color: var(--color-bg);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-family: var(--font-subtitle);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Servicios */
+        .services {
+            background-color: var(--color-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--color-white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(155,123,123,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .services-footer {
+            text-align: center;
+        }
+
+        .services-footer p {
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Galería */
+        .gallery {
+            background-color: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44,31,31,0.4) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Reseñas */
+        .reviews {
+            background-color: var(--color-cream-light);
+            overflow: hidden;
+        }
+
+        .reviews-container {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .reviews-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .review-card {
+            flex: 0 0 85%;
+            max-width: 400px;
+            background-color: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            scroll-snap-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        @media (min-width: 768px) {
+            .review-card {
+                flex: 0 0 calc(33.333% - 1.33rem);
+            }
+        }
+
+        .stars {
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .review-author {
+            font-family: var(--font-subtitle);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+        }
+
+        /* Visítanos */
+        .visit {
+            background-color: var(--color-white);
+        }
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .visit-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-block {
+            margin-bottom: 2rem;
+        }
+
+        .info-title {
+            font-family: var(--font-subtitle);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content {
+            font-size: 1.1rem;
+        }
+
+        .hours-table {
+            width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .hours-table td {
+            padding: 1rem 0;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* Reserva */
+        .booking {
+            background-color: var(--color-bg);
+            text-align: center;
+        }
+
+        .booking-widget {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: var(--color-white);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-text);
+            color: var(--color-cream);
+            padding: 5rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(245, 237, 228, 0.2);
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-style: italic;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-primary-light);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-subtitle);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-link:hover {
+            color: var(--color-primary-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(245, 237, 228, 0.1);
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(245, 237, 228, 0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* FAB */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(155, 123, 123, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background-color: var(--color-text);
+        }
+
+        @media (min-width: 768px) {
+            .fab {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--color-bg);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        /* About Grid */
+        .about-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; margin-top: 2rem; }
+        @media (min-width: 992px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+        .value-item-list { margin-bottom: 1.5rem; }
+        .value-item-list h3 { font-family: var(--font-subtitle); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: 0.25rem; }
+        
+        /* Menu Style Services */
+        .menu-container { max-width: 800px; margin: 0 auto 4rem; text-align: left; }
+        .menu-item { margin-bottom: 2.5rem; }
+        .menu-item-header { display: flex; align-items: baseline; margin-bottom: 0.5rem; }
+        .menu-item-title { font-size: 1.5rem; font-weight: 500; white-space: nowrap; font-family: var(--font-display); }
+        .menu-item-dots { flex-grow: 1; border-bottom: 1px dotted var(--color-gold); margin: 0 1rem; position: relative; top: -6px; opacity: 0.5; }
+        .menu-item-desc { color: #666; font-size: 1rem; line-height: 1.6; padding-right: 2rem; }
+        
+        /* Carousel Buttons */
+        .reviews-wrapper { position: relative; padding: 0 3rem; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--color-white); border: 1px solid var(--color-primary); color: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: var(--transition); z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .carousel-btn:hover { background: var(--color-primary); color: var(--color-white); }
+        .prev-btn { left: 0; }
+        .next-btn { right: 0; }
+        @media (max-width: 768px) { .reviews-wrapper { padding: 0 1rem; } .carousel-btn { width: 36px; height: 36px; font-size: 1rem; } .prev-btn { left: 5px; } .next-btn { right: 5px; } }
+        
+        /* Footer Info */
+        .footer-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto 3rem; text-align: left; border-top: 1px solid rgba(245, 237, 228, 0.1); border-bottom: 1px solid rgba(245, 237, 228, 0.1); padding: 3rem 0; }
+        .footer-col h4 { font-family: var(--font-subtitle); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary-light); margin-bottom: 1rem; }
+        .footer-col p { color: rgba(245, 237, 228, 0.8); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967538/2025-07-07_vfiy3i.webp" alt="Sandra Pravia Logo" style="width: 55px; height: 55px; object-fit: contain; border-radius: 50%;">
+                <div class="logo-text">Sandra Pravia<br><span style="font-size: 0.7em; color: var(--color-primary);">Nails Studio</span></div>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-link">Sobre Sandra</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#resenas" class="nav-link">Reseñas</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="#reserva" class="btn btn-primary" style="margin-left: 1rem;">Reservar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg-decoration"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="decorator-line"></div>
+                <span class="subtitle">Nails Studio · Oviedo</span>
+                <h1 class="title-xl">Sandra Pravia</h1>
+                <p class="tagline">"Sensibilidad y cuidado al detalle"</p>
+                <a href="#reserva" class="btn btn-primary">Reserva tu cita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="sobre-mi" class="section about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967538/2025-07-07_vfiy3i.webp" alt="Sandra Pravia Logo" style="border-radius: 20px; width: 100%; height: 100%; object-fit: contain; aspect-ratio: 1/1; box-shadow: 0 20px 40px rgba(0,0,0,0.05);" loading="lazy" referrerpolicy="no-referrer">
+                </div>
+                <div class="about-content fade-in" style="text-align: left;">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <span class="subtitle">Conócenos</span>
+                        <h2 class="title-md">Sobre Sandra</h2>
+                    </div>
+                    
+                    <p class="about-text" style="margin: 0 0 3rem; text-align: left; max-width: 100%;">
+                        Sandra no solo cuida tus uñas, cuida cómo te sientes. Cada visita es un momento tuyo, con la calma, el mimo y la precisión que mereces. Un espacio donde la belleza se encuentra con el bienestar.
+                    </p>
+
+                    <div class="values-list">
+                        <div class="value-item-list">
+                            <h3 class="value-title">Mimo y detalle</h3>
+                            <p>Atención minuciosa en cada paso para un acabado perfecto.</p>
+                        </div>
+                        <div class="value-item-list">
+                            <h3 class="value-title">Resultados duraderos</h3>
+                            <p>Productos de alta calidad y técnicas que protegen tu uña natural.</p>
+                        </div>
+                        <div class="value-item-list">
+                            <h3 class="value-title">Trato personalizado</h3>
+                            <p>Asesoramiento a medida para encontrar tu estilo ideal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="subtitle">Nuestra Especialidad</span>
+                <h2 class="title-md">Nuestros Servicios</h2>
+            </div>
+
+            <div class="menu-container fade-in">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Manicura</h3>
+                        <div class="menu-item-dots"></div>
+                    </div>
+                    <p class="menu-item-desc">Semipermanente o clásica. Cuidado profundo de cutículas, preparación de la uña y esmaltado perfecto con brillo duradero.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Pedicura</h3>
+                        <div class="menu-item-dots"></div>
+                    </div>
+                    <p class="menu-item-desc">Experiencia spa o semipermanente. Relajación, exfoliación y embellecimiento para unos pies impecables.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Nail Art</h3>
+                        <div class="menu-item-dots"></div>
+                    </div>
+                    <p class="menu-item-desc">Diseños personalizados, desde minimalistas hasta elaborados. Convertimos tus uñas en pequeñas obras de arte.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Acrílico / Gel</h3>
+                        <div class="menu-item-dots"></div>
+                    </div>
+                    <p class="menu-item-desc">Extensiones y refuerzos estructurados para lograr la longitud y forma deseada con máxima resistencia.</p>
+                </div>
+            </div>
+
+            <div class="services-footer fade-in">
+                <p>¿No sabes qué elegir? Sandra te asesora personalmente.</p>
+                <a href="#reserva" class="btn btn-outline">Ver todos los servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="section gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="subtitle">Inspiración</span>
+                <h2 class="title-md">El Arte de Sandra</h2>
+                <p style="margin-top: 1rem; color: #666;">Cada diseño es único, cada clienta es especial</p>
+            </div>
+        </div>
+        
+        <div class="gallery-grid fade-in">
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967682/657544423_18043098236751791_5436124845326640006_n._sbjiyp.jpg" alt="Manicura elegante" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967682/626014133_18036650741751791_5777284284739590450_n._sq80kp.jpg" alt="Nail Art detallado" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967682/611270161_18033678797751791_1262892303860412082_n._zchjg4.jpg" alt="Experiencia relajante" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967681/564814291_18024820547751791_3870084521338371231_n._miaw4p.jpg" alt="Pedicura spa" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reseñas -->
+    <section id="resenas" class="section reviews">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="subtitle">Testimonios</span>
+                <h2 class="title-md">Lo que dicen nuestras clientas</h2>
+            </div>
+
+            <div class="reviews-wrapper fade-in">
+                <button class="carousel-btn prev-btn" id="prevReview" aria-label="Reseña anterior">❮</button>
+                <button class="carousel-btn next-btn" id="nextReview" aria-label="Reseña siguiente">❯</button>
+                <div class="reviews-container" id="reviewsContainer">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Sandra es la mejor, una persona muy amable y carismática que siempre me deja mis uñas perfectas y aún mejor de lo que se las pido. Charlar con ella es como una terapia necesaria en la que el tiempo se pasa volando y sales renovada."</p>
+                        <p class="review-author">— Tami Bernal</p>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Desde que fui la primera vez, voy siempre a hacerme las uñas con Sandra. Es un gustazo visitarla, es amable, profesional y entiende a la perfección y se adapta a lo que estás buscando."</p>
+                        <p class="review-author">— Carmela Pérez</p>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Un 10, nunca me habían hecho las uñas semipermanentes con tanto mimo y con tanta atención a cada detalle."</p>
+                        <p class="review-author">— Margarita Fernández-Peña</p>
+                    </div>
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Maravillosa. El centro es una preciosidad de acogedor. Sin duda, 100% recomendable."</p>
+                        <p class="review-author">— Leticia Requena</p>
+                    </div>
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Sandra es una maga increíble. Estuvo muy atenta a mis peticiones y cumplió con todo. ¡Le daría 10 estrellas si pudiera!"</p>
+                        <p class="review-author">— Sean Mauk</p>
+                    </div>
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Sandra es 5 estrellas, como persona y como profesional. Gracias por atenderme siempre tan bien y por los buenos ratos."</p>
+                        <p class="review-author">— Lucia Osoro</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="text-align: center; margin-top: 3rem;">
+                <a href="https://www.google.com/maps/place/Sandra+Pravia+manicura+y+pedicura+nails+studio/@43.3613405,-5.8584852,17z/data=!3m1!5s0xd368ce29a4003d5:0x1d549360fb208077!4m8!3m7!1s0xd368d8bbd3a5087:0xcd63fe3014221eb!8m2!3d43.3613366!4d-5.8559103!9m1!1b1!16s%2Fg%2F11sszdc8x8?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Deja tu reseña en Google</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visítanos -->
+    <section id="contacto" class="section visit">
+        <div class="container">
+            <div class="visit-grid">
+                <div class="visit-info fade-in">
+                    <span class="subtitle">Contacto</span>
+                    <h2 class="title-md" style="margin-bottom: 2rem;">Encuéntranos</h2>
+                    
+                    <div class="info-block">
+                        <div class="info-title">Dirección</div>
+                        <div class="info-content">
+                            Peluquería Barbareando<br>
+                            Av. de Galicia, 16, 1 izquierda<br>
+                            33005 Oviedo, Asturias
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-title">Teléfono</div>
+                        <div class="info-content">
+                            <a href="tel:628558172" style="color: var(--color-primary); font-weight: 500;">628 558 172</a>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-title">Instagram</div>
+                        <div class="info-content">
+                            <a href="https://www.instagram.com/sandrapravia_nails/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 500;">@sandrapravia_nails</a>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-title">Horario</div>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Lunes</td>
+                                <td>9:30 – 16:00</td>
+                            </tr>
+                            <tr>
+                                <td>Martes a Viernes</td>
+                                <td>9:30 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Sábado</td>
+                                <td>10:00 – 13:00</td>
+                            </tr>
+                            <tr>
+                                <td>Domingo</td>
+                                <td>Cerrado</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <a href="https://www.google.com/maps/dir//Sandra+Pravia+manicura+y+pedicura+nails+studio" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: 1rem;">Cómo llegar</a>
+                </div>
+
+                <div class="visit-map fade-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.234!2d-5.8584852!3d43.3613405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd368d8bbd3a5087%3A0xcd63fe3014221eb!2sSandra%20Pravia%20manicura%20y%20pedicura%20nails%20studio!5e0!3m2!1ses!2ses!4v1"
+                        width="100%"
+                        height="400"
+                        style="border:0; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reserva -->
+    <section id="reserva" class="section booking">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="subtitle">Tu momento</span>
+                <h2 class="title-md">Reserva tu cita</h2>
+                <p style="margin-top: 1rem; font-size: 1.1rem; color: #666;">Elige tu momento, nosotras nos encargamos del resto</p>
+            </div>
+
+            <div class="booking-widget fade-in">
+                <iframe
+                    src="https://widget.treatwell.es/establecimiento/sandra-pravia-manicura-y-pedicura/"
+                    width="100%"
+                    height="700px"
+                    frameborder="0"
+                    scrolling="yes"
+                    style="border: none; border-radius: 12px; overflow: hidden;">
+                </iframe>
+            </div>
+
+            <p class="fade-in" style="margin-top: 2rem; color: #666;">
+                ¿Prefieres llamar? <a href="tel:628558172" style="color: var(--color-primary); font-weight: 500;">628 558 172</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1774967538/2025-07-07_vfiy3i.webp" alt="Sandra Pravia Logo" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 1.5rem; border-radius: 50%;">
+            <p class="footer-tagline">Sensibilidad y cuidado al detalle</p>
+            
+            <div class="footer-links">
+                <a href="#inicio" class="footer-link">Inicio</a>
+                <a href="#sobre-mi" class="footer-link">Sobre Sandra</a>
+                <a href="#servicios" class="footer-link">Servicios</a>
+                <a href="#reserva" class="footer-link">Reservar</a>
+                <a href="#contacto" class="footer-link">Contacto</a>
+                <a href="https://www.instagram.com/sandrapravia_nails/" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+            </div>
+
+            <div class="footer-info-grid">
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p><a href="tel:628558172">628 558 172</a></p>
+                    <p><a href="mailto:info@sandrapravia.es">info@sandrapravia.es</a></p>
+                    <p><a href="https://www.instagram.com/sandrapravia_nails/" target="_blank" rel="noopener noreferrer">@sandrapravia_nails</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Ubicación</h4>
+                    <p>Peluquería Barbareando</p>
+                    <p>Av. de Galicia, 16, 1 izq.</p>
+                    <p>33005 Oviedo, Asturias</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Horario</h4>
+                    <p>Lunes: 9:30 - 16:00</p>
+                    <p>Mar - Vie: 9:30 - 18:00</p>
+                    <p>Sáb: 10:00 - 13:00</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Oviedo, Asturias</p>
+                <p>&copy; 2025 Sandra Pravia Nails Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile FAB -->
+    <a href="tel:628558172" class="fab" aria-label="Llamar para reservar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-link, .nav-links .btn');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Reviews Carousel
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        const prevReviewBtn = document.getElementById('prevReview');
+        const nextReviewBtn = document.getElementById('nextReview');
+
+        if (reviewsContainer && prevReviewBtn && nextReviewBtn) {
+            const scrollAmount = 350; // Approximate width of a card + gap
+            
+            prevReviewBtn.addEventListener('click', () => {
+                reviewsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+            
+            nextReviewBtn.addEventListener('click', () => {
+                reviewsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>
